@@ -1,0 +1,42 @@
+{
+  "news": [
+    {
+      "id": 1,
+      "title": "Homelander Saves Flight 37",
+      "excerpt": "A heroic rescue that definitely went perfectly.",
+      "date": "2026-05-16",
+      "tag": "EXCLUSIVE"
+    },
+    {
+      "id": 2,
+      "title": "Compound V Sales Skyrocket",
+      "excerpt": "Investors are thrilled with the new distribution model.",
+      "date": "2026-05-15",
+      "tag": "FINANCE"
+    }
+  ],
+  "subscribers": [
+    "Shehab"
+  ],
+  "orders": [],
+  "incidentCount": 0,
+  "brainCellsLost": 36,
+  "livesSaved": 1554740,
+  "heroRatings": {
+    "Homelander": 98.5,
+    "Starlight": 82.1,
+    "The Deep": 45,
+    "A-Train": 76.4
+  },
+  "deepQuotes": [
+    "Why do we call it 'Buildings' if they are already built?",
+    "If I eat a taco under water, is it still a taco or a wet sandwich?",
+    "Octopuses have three hearts, yet they never call me back.",
+    "The ocean is just a giant soup that hasn't been heated yet.",
+    "If sound can't travel in space, does that mean the stars are just silent screamers?",
+    "Is an octopus just a wet spider?",
+    "If I can breathe under water, why do I still feel suffocated by my own fame?",
+    "Do fish ever get thirsty?",
+    "If the ocean is 70% of the earth, why is Vought 100% of my life?"
+  ]
+}

@@ -5,7 +5,15 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-app.use(express.static(__dirname)); // Serve static files from the current directory
+app.use(express.static(path.join(__dirname, '..', 'frontend'))); // Serve static files from the frontend directory
+
+// Enable CORS (Cross-Origin Resource Sharing)
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    next();
+});
 
 // Simple JSON Database Paths
 const DB_PATH = path.join(__dirname, 'db.json');
@@ -54,6 +62,20 @@ app.get('/api/deep-thoughts/random', (req, res) => {
         quote: randomQuote,
         totalBrainCellsLost: db.brainCellsLost
     });
+});
+
+// API: Add New Deep Thought (Quote)
+app.post('/api/quotes', (req, res) => {
+    const { quote } = req.body;
+    if (!quote || typeof quote !== 'string' || quote.trim() === '') {
+        return res.status(400).json({ success: false, message: "Quote cannot be empty." });
+    }
+
+    let db = readDB();
+    db.deepQuotes.push(quote.trim());
+    writeDB(db);
+
+    res.status(201).json({ success: true, message: "Quote added to the Vought mainframe.", quote: quote.trim() });
 });
 
 // ... helper functions (readDB, writeDB) ...
@@ -179,6 +201,11 @@ app.post('/api/stats/lives-saved', (req, res) => {
 
 // API: Live Approval Ratings
 app.get('/api/stats/ratings', (req, res) => {
+    res.json(readDB().heroRatings);
+});
+
+// API: Heroes Ratings (Clean Alias)
+app.get('/api/heroes', (req, res) => {
     res.json(readDB().heroRatings);
 });
 

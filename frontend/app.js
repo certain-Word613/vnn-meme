@@ -231,7 +231,22 @@ function initSubscribe() {
                     body: JSON.stringify({ email })
                 });
                 const data = await res.json();
-                alert(data.message);
+                
+                // Success OR Already Subscribed (Status 400) both should turn the button green
+                if (res.ok || data.success || res.status === 400) {
+                    // Visual feedback: Change to green
+                    subBtn.textContent = "SUBSCRIBED!";
+                    subBtn.style.setProperty('background-color', '#22c55e', 'important');
+                    subBtn.style.color = "#ffffff";
+                    subBtn.style.boxShadow = "0 0 20px rgba(34, 197, 94, 0.8)";
+                    subBtn.style.pointerEvents = "none"; 
+                    
+                    if (res.status === 400) {
+                        console.log("Citizen was already loyal. Still showing green.");
+                    }
+                } else {
+                    alert(data.message || "Vought Mainframe Error.");
+                }
             } catch (e) {
                 alert("Subscription recorded locally. Vought will find you.");
             }
