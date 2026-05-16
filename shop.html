@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vought Store | Official Supe Merchandise</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Oswald:wght@700&display=swap" rel="stylesheet">
+</head>
+<body class="shop-page">
+    <div class="site-bg-image"></div>
+
+    <!-- Ticker -->
+    <div class="ticker-wrap">
+        <div class="ticker-label">VOUGHT SHOP</div>
+        <div class="ticker-track">
+            <span>20% OFF ALL HOMELANDER FIGURES &bull; COMPOUND V RESTOCK COMING SOON &bull; FREE SHIPPING ON ORDERS OVER $5,000 &bull;</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="brand">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <div class="show-title">
+                        <img src="the_boys_logo.png" alt="The Boys" class="brand-logo">
+                    </div>
+                    <div class="brand-sub">VOUGHT NEWS NETWORK</div>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">HOME</a>
+                <a href="quiz.html" class="nav-link">QUIZ</a>
+                <a href="shop.html" class="nav-link">SHOP <span id="cart-count" style="background: var(--red); padding: 2px 6px; border-radius: 50%; font-size: 0.7rem;">0</span></a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="shop-layout" style="max-width: 1400px; margin: 100px auto; padding: 0 24px;">
+        <div class="shop-header" style="text-align: center; margin-bottom: 60px;">
+            <h1 style="font-family: 'Oswald', sans-serif; font-size: 3rem; color: #ffd700;">OFFICIAL VOUGHT STORE</h1>
+            <p style="color: #888;">High-Quality Products for the High-Quality Citizen</p>
+        </div>
+
+        <div class="shop-grid" id="shop-items" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+            <!-- Product 1 -->
+            <div class="ad-card" style="border: 1px solid #ffd700;">
+                <div class="merch-thumb" style="font-size: 5rem; height: 200px;">🧪</div>
+                <div class="ad-content" style="padding-top: 20px;">
+                    <h3>COMPOUND V (PREMIUM)</h3>
+                    <p>Unlock your hidden potential. *Side effects may include sudden explosion.</p>
+                    <div style="font-size: 1.5rem; color: #ffd700; margin-bottom: 15px;">$99,999.00</div>
+                    <button class="stare-btn" style="width: 100%; background: #ffd700; color: #000;">ADD TO CART</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="ad-card">
+                <div class="merch-thumb" style="font-size: 5rem; height: 200px;">🦸‍♂️</div>
+                <div class="ad-content" style="padding-top: 20px;">
+                    <h3>HOMELANDER CAPE (USED)</h3>
+                    <p>Authentic cape worn during the Dallas Incident. 100% real blood stains.</p>
+                    <div style="font-size: 1.5rem; color: #ffd700; margin-bottom: 15px;">$15,000.00</div>
+                    <button class="stare-btn" style="width: 100%;">ADD TO CART</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="ad-card">
+                <div class="merch-thumb" style="font-size: 5rem; height: 200px;">🐙</div>
+                <div class="ad-content" style="padding-top: 20px;">
+                    <h3>TIMOTHY'S MEMORIAL SNACK</h3>
+                    <p>Delicious deep-sea delicacies. A favorite of The Deep.</p>
+                    <div style="font-size: 1.5rem; color: #ffd700; margin-bottom: 15px;">$49.99</div>
+                    <button class="stare-btn" style="width: 100%;">ADD TO CART</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="checkout-footer" style="margin-top: 80px; text-align: center; border-top: 1px solid #222; padding-top: 40px;">
+            <button class="stare-btn" onclick="checkout()" style="padding: 20px 60px; font-size: 1.2rem; background: #22c55e;">COMPLETE VOUGHT PURCHASE (CHECKOUT)</button>
+        </div>
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>VOUGHT INVENTORY</h3>
+                <button class="close-cart" onclick="toggleCart()">&times;</button>
+            </div>
+            <div id="cart-items-list" class="cart-items-list">
+                <!-- Items injected here -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">TOTAL: <span id="cart-total-price">$0.00</span></div>
+                <button class="stare-btn" onclick="checkout()" style="width: 100%; background: #22c55e;">CONFIRM PURCHASE</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

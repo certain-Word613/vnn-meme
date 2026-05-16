@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vought International — Heroes News</title>
+    <meta name="description" content="The official Vought International Heroes News Network. Latest updates, missions, and achievements from Earth's mightiest Supes.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="hero-bg-active">
+    <div class="site-bg-overlay"></div>
+    <div class="site-bg-image" id="main-bg-image"></div>
+
+    <!-- Breaking News Ticker -->
+    <div class="ticker-wrap" id="ticker-wrap">
+        <div class="ticker-label">BREAKING</div>
+        <div class="ticker-track">
+            <span>Homelander saves commercial flight over the Pacific &bull;</span>
+            <span>Queen Maeve signs $200M Vought endorsement deal &bull;</span>
+            <span>A-Train breaks his own speed record at Dallas Marathon &bull;</span>
+            <span>The Deep returns from ocean conservation mission with zero casualties &bull;</span>
+            <span>Black Noir foils robbery at Vought Tower — 12 arrested &bull;</span>
+            <span>Starlight named "America's Sweetheart" by People Magazine for third year &bull;</span>
+            <span>Compound V clinical trials showing "promising results," Vought confirms &bull;</span>
+        </div>
+    </div>
+
+    <!-- Incident Counter -->
+    <div class="incident-counter-wrap">
+        <div class="incident-bar">
+            <div class="incident-label">DAYS SINCE LAST SUPE-RELATED INCIDENT:</div>
+            <div class="incident-number" id="incident-num">000</div>
+            <div class="incident-ticker">
+                <span id="incident-msg">A-TRAIN STRUCK ANOTHER CITIZEN TODAY... COUNTER RESET TO ZERO.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header" id="site-header">
+        <div class="header-inner">
+            <div class="brand">
+                <div class="show-title">
+                    <img src="the_boys_logo.png" alt="The Boys" class="brand-logo" id="brand-logo">
+                </div>
+                <div class="brand-sub">VOUGHT NEWS NETWORK</div>
+            </div>
+            <nav class="main-nav" id="main-nav">
+                <a href="index.html" class="nav-link active">HOME</a>
+                <a href="#rankings-list" class="nav-link">HEROES</a>
+                <a href="#wanted-section" class="nav-link">MISSIONS</a>
+                <a href="quiz.html" class="nav-link">QUIZ</a>
+                <a href="shop.html" class="nav-link">SHOP <span id="cart-count" style="background: var(--red); padding: 2px 6px; border-radius: 50%; font-size: 0.7rem;">0</span></a>
+            </nav>
+            <div class="header-cta">
+                <span class="live-badge">&#x25CF; LIVE</span>
+                <button class="subscribe-btn" id="subscribe-btn">SUBSCRIBE</button>
+            </div>
+        </div>
+    </header>
+    <!-- Main Layout with Sidebars -->
+    <div class="main-layout">
+        <!-- Sidebar Left: Vought+ Ads -->
+        <aside class="sidebar sidebar-left">
+            <div class="sidebar-sticky">
+                <div class="v-plus-mini-ad">
+                    <span class="ad-label">VOUGHT+ EXCLUSIVE</span>
+                    <div class="mini-poster poster-dawn"></div>
+                    <p>DAWN OF THE SEVEN</p>
+                    <button class="stream-now">STREAM NOW</button>
+                </div>
+                <div class="v-plus-mini-ad">
+                    <span class="ad-label">NEW SERIES</span>
+                    <div class="mini-poster poster-noir"></div>
+                    <p>BLACK NOIR: INSURRECTION</p>
+                    <button class="stream-now">WATCH EP 1</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Center Content -->
+        <main class="center-content">
+    
+    <!-- Lives Saved Propaganda Banner -->
+    <div style="background: linear-gradient(90deg, #900, #000); padding: 15px; text-align: center; border-bottom: 2px solid var(--red); margin-bottom: 20px;">
+        <h2 style="font-family: 'Oswald'; margin: 0; color: #fff; font-size: 1.5rem; letter-spacing: 2px;">
+            LIVES SAVED BY VOUGHT: <span id="lives-saved-counter" style="color: #ffd700; font-size: 2rem;">LOADING...</span>
+        </h2>
+        <button id="cheer-btn" class="stare-btn" style="padding: 5px 15px; font-size: 0.8rem; margin-top: 10px; background: #fff; color: #900;">THANK VOUGHT (+1)</button>
+    </div>
+
+    <!-- Hero Feature -->
+    <section class="hero-feature" id="hero-feature">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-category-tag">EXCLUSIVE REPORT</div>
+            <h1 class="hero-headline">Homelander Stops Nuclear Meltdown — 40,000 Lives Saved in Single Day</h1>
+            <p class="hero-sub">In what Vought International is calling "the most decisive solo operation in supe history," John — The Homelander — intervened at the Millbrook Reactor with seconds to spare.</p>
+            <div class="hero-meta">
+                <span class="author">By <strong>Victoria Newman</strong></span>
+                <span class="dot">&bull;</span>
+                <span class="timestamp" id="hero-ts">Loading...</span>
+                <span class="dot">&bull;</span>
+                <span class="read-time">4 min read</span>
+            </div>
+            <a href="#" class="read-more-btn" id="read-more-hero">READ FULL STORY</a>
+        </div>
+        <div class="hero-badge-wrap">
+            <div class="hero-badge">
+                <div class="badge-icon">&#9889;</div>
+                <div class="badge-num" data-target="40000" id="lives-counter">0</div>
+                <div class="badge-label">LIVES SAVED</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <main class="main-grid" id="main-content">
+
+        <!-- Primary Stories Column -->
+        <div class="primary-col">
+
+            <div class="section-header">
+                <h2 class="section-title">TOP STORIES</h2>
+                <span class="section-rule"></span>
+            </div>
+
+            <!-- Story Card 1 -->
+            <article class="story-card featured-story" id="story-1">
+                <div class="story-img-wrap">
+                    <div class="story-img supe-card-a-train">
+                        <div class="img-overlay"></div>
+                        <span class="supe-name-overlay">A-TRAIN</span>
+                    </div>
+                </div>
+                <div class="story-body">
+                    <div class="story-tag tag-sports">SPORTS</div>
+                    <h3 class="story-headline">A-Train Becomes First Supe to Complete Ironman Triathlon in Under 45 Minutes</h3>
+                    <p class="story-excerpt">The speedster completed the 226km race at a pace that left event organizers scrambling to update their record books — and their stopwatches.</p>
+                    <div class="story-footer">
+                        <span class="story-date">May 14, 2026</span>
+                        <a href="#" class="story-link" id="link-story-1">Read More &rarr;</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Story Card 2 -->
+            <article class="story-card" id="story-2">
+                <div class="story-img-wrap story-img-sm">
+                    <div class="story-img supe-card-maeve">
+                        <span class="supe-name-overlay">QUEEN MAEVE</span>
+                    </div>
+                </div>
+                <div class="story-body">
+                    <div class="story-tag tag-society">SOCIETY</div>
+                    <h3 class="story-headline">Queen Maeve Opens Free Combat Training Centers Across 12 U.S. Cities</h3>
+                    <p class="story-excerpt">A nationwide initiative backed by Vought's Community Impact Fund, designed to teach self-defense to underserved communities.</p>
+                    <div class="story-footer">
+                        <span class="story-date">May 13, 2026</span>
+                        <a href="#" class="story-link" id="link-story-2">Read More &rarr;</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Story Card 3 -->
+            <article class="story-card" id="story-3">
+                <div class="story-img-wrap story-img-sm">
+                    <div class="story-img supe-card-deep">
+                        <span class="supe-name-overlay">THE DEEP</span>
+                    </div>
+                </div>
+                <div class="story-body">
+                    <div class="story-tag tag-environment">ENVIRONMENT</div>
+                    <h3 class="story-headline">The Deep Recovers Lost Cargo Ship — And Saves an Entire Pod of Humpback Whales</h3>
+                    <p class="story-excerpt">A routine retrieval mission off the coast of Alaska turned into a marine conservation triumph as Kevin personally guided the endangered pod to safety.</p>
+                    <div class="story-footer">
+                        <span class="story-date">May 12, 2026</span>
+                        <a href="#" class="story-link" id="link-story-3">Read More &rarr;</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+
+            <!-- Supe Rankings Widget -->
+            <div class="widget rankings-widget">
+                <div class="widget-header">APPROVAL RATINGS</div>
+                <ul class="rankings-list" id="rankings-list">
+                    <li class="rank-item">
+                        <span class="rank-pos">01</span>
+                        <div class="rank-info">
+                            <span class="rank-name">HOMELANDER</span>
+                            <div class="rank-bar-wrap"><div class="rank-bar" id="bar-Homelander" style="width:0%; background: #ffd700;"></div></div>
+                        </div>
+                        <span class="rank-pct" id="pct-Homelander">98%</span>
+                    </li>
+                    <li class="rank-item">
+                        <span class="rank-pos">02</span>
+                        <div class="rank-info">
+                            <span class="rank-name">STARLIGHT</span>
+                            <div class="rank-bar-wrap"><div class="rank-bar" id="bar-Starlight" style="width:0%;"></div></div>
+                        </div>
+                        <span class="rank-pct" id="pct-Starlight">94%</span>
+                    </li>
+                    <li class="rank-item">
+                        <span class="rank-pos">03</span>
+                        <div class="rank-info">
+                            <span class="rank-name">A-TRAIN</span>
+                            <div class="rank-bar-wrap"><div class="rank-bar" id="bar-A-Train" style="width:0%;"></div></div>
+                        </div>
+                        <span class="rank-pct" id="pct-A-Train">79%</span>
+                    </li>
+                    <li class="rank-item">
+                        <span class="rank-pos">04</span>
+                        <div class="rank-info">
+                            <span class="rank-name">THE DEEP</span>
+                            <div class="rank-bar-wrap"><div class="rank-bar" id="bar-The Deep" style="width:0%;"></div></div>
+                        </div>
+                        <span class="rank-pct" id="pct-The Deep">61%</span>
+                    </li>
+                </ul>
+                <p class="widget-source">Source: Vought Gallup Poll &bull; May 2026</p>
+            </div>
+
+            <!-- Latest Missions Widget -->
+            <div class="widget missions-widget">
+                <div class="widget-header">RECENT MISSIONS</div>
+                <ul class="missions-list" id="missions-list">
+                    <li class="mission-item success">
+                        <span class="mission-dot"></span>
+                        <div class="mission-info">
+                            <span class="mission-name">Millbrook Reactor — Homelander</span>
+                            <span class="mission-status">COMPLETED</span>
+                        </div>
+                    </li>
+                    <li class="mission-item success">
+                        <span class="mission-dot"></span>
+                        <div class="mission-info">
+                            <span class="mission-name">Pacific Flight 227 — Homelander</span>
+                            <span class="mission-status">COMPLETED</span>
+                        </div>
+                    </li>
+                    <li class="mission-item success">
+                        <span class="mission-dot"></span>
+                        <div class="mission-info">
+                            <span class="mission-name">Vought Tower Robbery — Black Noir</span>
+                            <span class="mission-status">COMPLETED</span>
+                        </div>
+                    </li>
+                    <li class="mission-item ongoing">
+                        <span class="mission-dot"></span>
+                        <div class="mission-info">
+                            <span class="mission-name">Gulf Coast Rescue — Starlight</span>
+                            <span class="mission-status">ONGOING</span>
+                        </div>
+                    </li>
+                    <li class="mission-item ongoing">
+                        <span class="mission-dot"></span>
+                        <div class="mission-info">
+                            <span class="mission-name">Arctic Patrol — Queen Maeve</span>
+                            <span class="mission-status">ONGOING</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Vought Quote Block -->
+            <div class="widget quote-widget">
+                <blockquote class="vought-quote" id="rotating-quote">
+                    "Heroes don't ask for thanks. But they deserve it."
+                </blockquote>
+                <cite class="quote-cite">— Madelyn Stillwell, VP of Hero Management</cite>
+            </div>
+
+        </aside>
+
+    </main>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar" id="stats-bar">
+        <div class="stats-inner">
+            <div class="stat-item">
+                <div class="stat-num" data-target="1247" id="stat-missions">0</div>
+                <div class="stat-label">MISSIONS THIS YEAR</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-num" data-target="98" id="stat-approval">0</div>
+                <div class="stat-label">% PUBLIC APPROVAL</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-num" data-target="3400000" id="stat-lives">0</div>
+                <div class="stat-label">LIVES SAVED SINCE 2006</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-num" data-target="7" id="stat-supes">0</div>
+                <div class="stat-label">ACTIVE SEVEN MEMBERS</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Story Row -->
+    <section class="more-stories" id="more-stories">
+        <div class="section-header">
+            <h2 class="section-title">MORE FROM VOUGHT NEWS</h2>
+            <span class="section-rule"></span>
+        </div>
+        <div class="stories-row">
+
+            <article class="mini-card" id="mini-1">
+                <div class="mini-img supe-card-noir">
+                    <span class="supe-chip">BLACK NOIR</span>
+                </div>
+                <div class="mini-tag tag-security">SECURITY</div>
+                <h4 class="mini-headline">Black Noir Dismantles Underground Arms Network — 47 Weapons Seized</h4>
+                <span class="mini-date">May 11, 2026</span>
+            </article>
+
+            <article class="mini-card" id="mini-2">
+                <div class="mini-img supe-card-starlight">
+                    <span class="supe-chip">STARLIGHT</span>
+                </div>
+                <div class="mini-tag tag-charity">CHARITY</div>
+                <h4 class="mini-headline">Starlight's "Lights On" Program Brings Solar Power to 80 Rural Schools</h4>
+                <span class="mini-date">May 10, 2026</span>
+            </article>
+
+            <article class="mini-card" id="mini-3">
+                <div class="mini-img supe-card-homelander">
+                    <span class="supe-chip">HOMELANDER</span>
+                </div>
+                <div class="mini-tag tag-exclusive">EXCLUSIVE</div>
+                <h4 class="mini-headline">Interview: Homelander on Leadership, Sacrifice, and the Future of the Seven</h4>
+                <span class="mini-date">May 9, 2026</span>
+            </article>
+
+            <article class="mini-card" id="mini-4">
+                <div class="mini-img supe-card-compound">
+                    <span class="supe-chip">VOUGHT R&D</span>
+                </div>
+                <div class="mini-tag tag-science">SCIENCE</div>
+                <h4 class="mini-headline">New Vought Research Suggests Supes Live 30% Longer Than Average Americans</h4>
+                <span class="mini-date">May 8, 2026</span>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- Sponsored Grid -->
+    <section class="sponsored-grid">
+        <div class="ad-card maeve-ad">
+            <div class="ad-tag">SPONSORED</div>
+            <div class="ad-content">
+                <h3>BRAVE MAEVE'S LASAGNA</h3>
+                <p>SO STICKY, IT'S HEROIC! NOW WITH EXTRA CHEESE AND PRIDE.</p>
+                <div class="ad-offer">BUY 1 GET 50% OFF!</div>
+            </div>
+        </div>
+        <div class="ad-card ezekiel-ad">
+            <div class="ad-tag">VOUGHT FAITH</div>
+            <div class="ad-content">
+                <h3>RELIGIOUS TALES WITH EZEKIEL</h3>
+                <p>A SPIRITUAL JOURNEY INTO THE MIRACLES OF COMPOUND V... I MEAN, FAITH.</p>
+                <button class="ad-btn">JOIN THE FLOCK</button>
+            </div>
+        </div>
+        <div class="ad-card insurance-ad">
+            <div class="ad-tag">FINANCIAL SERVICES</div>
+            <div class="ad-content">
+                <h3>SUPE-CASUALTY INSURANCE</h3>
+                <p>PROTECT YOUR HOME FROM THE UNEXPECTED. PEACE OF MIND FOR A VOUGHT WORLD.</p>
+                <span class="fine-print">*Excludes damages caused by Homelander, Butcher, or supes flying below 50ft.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vought Threat Level Section -->
+    <section class="threat-level-section" id="wanted-section">
+        <div class="section-header">
+            <h2 class="section-title">VOUGHT THREAT LEVEL: CRITICAL</h2>
+            <span class="section-rule red"></span>
+        </div>
+        
+        <div class="report-box">
+            <div class="report-text">
+                <h3>HELP US PROTECT AMERICA</h3>
+                <p>Report any sightings of "The Boys" or unregistered supe activity immediately. Your safety is our priority.</p>
+            </div>
+            <button class="report-btn" id="report-tip-btn">SUBMIT ANONYMOUS TIP</button>
+        </div>
+
+        <div class="wanted-grid">
+            <!-- Butcher -->
+            <div class="wanted-card">
+                <div class="cctv-img">
+                    <img src="https://images.weserv.nl/?url=https://m.media-amazon.com/images/M/MV5BODU4NDY4NGUtZjcxMi00ZGEzLTkwY2MtYmZlMTE3MWM3YTRiXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg&w=300&h=180&fit=cover" class="wanted-photo">
+                    <div class="cctv-overlay"></div>
+                    <span class="wanted-label">MOST WANTED</span>
+                </div>
+                <div class="wanted-info">
+                    <h4>WILLIAM BUTCHER</h4>
+                    <p class="crime">Charges: Terrorism, Conspiracy, 1st Degree Murder</p>
+                </div>
+            </div>
+            <!-- Hughie -->
+            <div class="wanted-card">
+                <div class="cctv-img">
+                    <img src="https://images.weserv.nl/?url=https://m.media-amazon.com/images/M/MV5BMjA5OTU4MDYxN15BMl5BanBnXkFtZTgwNzYxMjg3MDE@._V1_.jpg&w=300&h=180&fit=cover" class="wanted-photo">
+                    <div class="cctv-overlay"></div>
+                    <span class="wanted-label">DANGEROUS</span>
+                </div>
+                <div class="wanted-info">
+                    <h4>HUGHIE CAMPBELL</h4>
+                    <p class="crime">Charges: Espionage, Vought Property Damage</p>
+                </div>
+            </div>
+            <!-- Frenchie -->
+            <div class="wanted-card">
+                <div class="cctv-img">
+                    <img src="https://images.weserv.nl/?url=https://m.media-amazon.com/images/M/MV5BMTkxNTI4Njg5Nl5BMl5BanBnXkFtZTgwNTU5NjcwNzE@._V1_.jpg&w=300&h=180&fit=cover" class="wanted-photo">
+                    <div class="cctv-overlay"></div>
+                    <span class="wanted-label">DANGEROUS</span>
+                </div>
+                <div class="wanted-info">
+                    <h4>"FRENCHIE"</h4>
+                    <p class="crime">Charges: Explosives, Chemical Warfare</p>
+                </div>
+            </div>
+            <!-- MM -->
+            <div class="wanted-card">
+                <div class="cctv-img">
+                    <img src="https://images.weserv.nl/?url=https://m.media-amazon.com/images/M/MV5BMjA0NzExNTcyMV5BMl5BanBnXkFtZTcwNzc1NDk5NQ@@._V1_.jpg&w=300&h=180&fit=cover" class="wanted-photo">
+                    <div class="cctv-overlay"></div>
+                    <span class="wanted-label">DANGEROUS</span>
+                </div>
+                <div class="wanted-info">
+                    <h4>MARVIN T. MILK</h4>
+                    <p class="crime">Charges: High-Level Theft, Assault</p>
+                </div>
+            </div>
+            <!-- Kimiko -->
+            <div class="wanted-card">
+                <div class="cctv-img">
+                    <img src="https://images.weserv.nl/?url=https://m.media-amazon.com/images/M/MV5BNmE3ZjU0Y2YtZGI3MS00MTA0LThmMDAtN2ZlOWM0YTA2YjExXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg&w=300&h=180&fit=cover" class="wanted-photo">
+                    <div class="cctv-overlay"></div>
+                    <span class="wanted-label">UNSPECIFIED THREAT</span>
+                </div>
+                <div class="wanted-info">
+                    <h4>KIMIKO MIYASHIRO</h4>
+                    <p class="crime">Charges: Extreme Violence, Unknown Origin</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deep Thoughts Section -->
+    <section class="deep-thoughts" id="deep-thoughts">
+        <div class="water-ripples"></div>
+        <div class="deep-content">
+            <div class="deep-header">
+                <span class="deep-tag">OCEANIC WISDOM</span>
+                <h2 class="deep-title">DEEP THOUGHTS WITH THE DEEP</h2>
+            </div>
+            <div class="thought-bubble">
+                <p id="current-thought">"Why do we call it 'Buildings' if they are already built?"</p>
+                <div id="brain-cells-counter" style="margin-top: 20px; font-size: 0.8rem; color: #555; font-weight: 700;">TOTAL BRAIN CELLS LOST GLOBALLY: <span id="brain-cells-val" style="color: var(--red);">0</span></div>
+            </div>
+            <button class="ocean-btn" id="deep-btn">LISTEN TO THE OCEAN</button>
+        </div>
+    </section>
+
+    <!-- Homelander Stare Simulator -->
+    <section class="stare-simulator" id="stare-game">
+        <div class="stare-container">
+            <div class="stare-bg"></div>
+            <div class="eyes-wrap">
+                <div class="eye left-eye"></div>
+                <div class="eye right-eye"></div>
+            </div>
+            <div class="stare-overlay" id="laser-overlay"></div>
+            
+            <div class="game-ui">
+                <h2 class="game-title">STARE SIMULATOR</h2>
+                <div class="timer" id="stare-timer">0.0s</div>
+                <button class="stare-btn" id="start-stare">DON'T BLINK</button>
+                <p class="game-status" id="game-status">Focus on his eyes. Do not look away.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vought+ Streaming Section -->
+    <section class="vought-plus-section" id="vought-plus">
+        <div class="v-plus-header">
+            <div class="v-plus-logo">VOUGHT<span>+</span></div>
+            <h2 class="v-plus-title">ORIGINALS & EXCLUSIVES</h2>
+        </div>
+        
+        <div class="streaming-grid">
+            <div class="movie-card">
+                <div class="movie-poster poster-dawn">
+                    <div class="movie-overlay">
+                        <i class="play-icon">▶</i>
+                    </div>
+                </div>
+                <div class="movie-info">
+                    <span class="movie-tag">MOVIE</span>
+                    <h4>DAWN OF THE SEVEN</h4>
+                    <p>The epic conclusion to the Vought Cinematic Universe.</p>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="movie-poster poster-noir">
+                    <div class="movie-overlay">
+                        <i class="play-icon">▶</i>
+                    </div>
+                </div>
+                <div class="movie-info">
+                    <span class="movie-tag">SERIES</span>
+                    <h4>BLACK NOIR: INSURRECTION</h4>
+                    <p>Silence is his deadliest weapon.</p>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="movie-poster poster-starlight">
+                    <div class="movie-overlay">
+                        <i class="play-icon">▶</i>
+                    </div>
+                </div>
+                <div class="movie-info">
+                    <span class="movie-tag">SERIES</span>
+                    <h4>CITIZEN STARLIGHT</h4>
+                    <p>Fighting for the heart of America.</p>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="movie-poster poster-deep">
+                    <div class="movie-overlay">
+                        <i class="play-icon">▶</i>
+                    </div>
+                </div>
+                <div class="movie-info">
+                    <span class="movie-tag">DOCUMENTARY</span>
+                    <h4>CHASING WAVES</h4>
+                    <p>Dive deep into the world of the oceanic hero.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+        </main>
+
+        <!-- Sidebar Right: Vought Merch -->
+        <aside class="sidebar sidebar-right">
+            <div class="sidebar-sticky">
+                <div class="merch-ad">
+                    <h3 class="merch-title">VOUGHT STORE</h3>
+                    <div class="merch-item">
+                        <div class="merch-thumb">🧪</div>
+                        <div class="merch-details">
+                            <p>Premium V-Milk</p>
+                            <span class="price">$499.99</span>
+                        </div>
+                    </div>
+                    <a href="shop.html" class="merch-banner" style="display: block; text-decoration: none;">VISIT FULL STORE</a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer" id="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="the_boys_logo.png" alt="The Boys" class="footer-brand-logo">
+                </div>
+                <p class="footer-tag">VOUGHT NEWS NETWORK — OFFICIAL MEDIA PARTNER</p>
+            </div>
+            <div class="footer-links">
+                <span>About VNN</span>
+                <span>Editorial Policy</span>
+                <span>Contact</span>
+                <span>Advertise</span>
+                <span>Terms of Use</span>
+            </div>
+            <p class="footer-legal">&copy; 2026 Vought International. All hero likenesses are property of Vought International LLC. All mission reports are verified by Vought PR.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>VOUGHT INVENTORY</h3>
+                <button class="close-cart" onclick="toggleCart()">&times;</button>
+            </div>
+            <div id="cart-items-list" class="cart-items-list">
+                <!-- Items injected here -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">TOTAL: <span id="cart-total-price">$0.00</span></div>
+                <button class="stare-btn" onclick="checkout()" style="width: 100%; background: #22c55e;">CONFIRM PURCHASE</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

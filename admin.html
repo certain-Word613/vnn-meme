@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vought Admin | Mainframe Control</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { background: #050505; color: #fff; padding: 40px; }
+        .admin-container { max-width: 1200px; margin: 0 auto; }
+        .admin-header { border-bottom: 2px solid var(--red); padding-bottom: 20px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: center; }
+        .admin-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; }
+        .admin-card { background: #111; border: 1px solid #222; padding: 30px; border-radius: 12px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 700; color: #666; }
+        input, textarea, select { width: 100%; padding: 12px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; }
+        .admin-btn { background: var(--red); color: #fff; border: none; padding: 15px 30px; font-weight: 800; cursor: pointer; width: 100%; border-radius: 6px; }
+        .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px; }
+        .stat-box { background: #111; padding: 20px; text-align: center; border-bottom: 4px solid var(--red); }
+        .stat-val { font-size: 2.5rem; font-family: 'Oswald'; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { text-align: left; padding: 15px; border-bottom: 1px solid #222; }
+        th { color: #666; font-size: 0.8rem; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <div>
+                <h1 style="font-family: 'Oswald'; letter-spacing: 2px;">VOUGHT MAINFRAME</h1>
+                <p style="color: var(--red); font-weight: 700; font-size: 0.8rem;">ADMINISTRATION PANEL // ACCESS LEVEL: HOMELANDER</p>
+            </div>
+            <a href="index.html" style="color: #666; text-decoration: none;">&larr; BACK TO SITE</a>
+        </header>
+
+        <div class="stats-row">
+            <div class="stat-box"><div class="stat-label">TOTAL NEWS</div><div class="stat-val" id="count-news">0</div></div>
+            <div class="stat-box"><div class="stat-label">SUBSCRIBERS</div><div class="stat-val" id="count-subs">0</div></div>
+            <div class="stat-box"><div class="stat-label">ORDERS</div><div class="stat-val" id="count-orders">0</div></div>
+        </div>
+
+        <div class="admin-grid">
+            <!-- Add News Form -->
+            <div class="admin-card">
+                <h2 style="margin-bottom: 20px; font-family: 'Oswald';">PUBLISH NEWS</h2>
+                <form id="news-form">
+                    <div class="form-group">
+                        <label>Headline</label>
+                        <input type="text" id="news-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category Tag</label>
+                        <select id="news-tag">
+                            <option value="EXCLUSIVE">EXCLUSIVE</option>
+                            <option value="CRITICAL">CRITICAL (RED ALERT)</option>
+                            <option value="SOCIETY">SOCIETY</option>
+                            <option value="ENVIRONMENT">ENVIRONMENT</option>
+                            <option value="SPORTS">SPORTS</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Excerpt</label>
+                        <textarea id="news-excerpt" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="admin-btn">PUBLISH TO NETWORK</button>
+                </form>
+            </div>
+
+            <!-- Recent Orders & Subs -->
+            <div class="admin-card">
+                <h2 style="margin-bottom: 20px; font-family: 'Oswald';">RECENT ACTIVITY</h2>
+                <div id="activity-log">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Details</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="activity-table-body">
+                            <!-- Injected via JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="margin-top: 40px; padding-top: 20px; border-top: 2px dashed #333;">
+                    <h2 style="margin-bottom: 15px; font-family: 'Oswald'; color: #f00;">HR CLEAN-UP CREW</h2>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <button class="admin-btn" style="background: #333;" onclick="cleanup('reset_counter')">RESET INCIDENTS</button>
+                        <button class="admin-btn" style="background: #333;" onclick="cleanup('sanitize_news')">SANITIZE NEWS</button>
+                        <button class="admin-btn" style="background: #900; grid-column: span 2;" onclick="cleanup('clear_evidence')">INCINERATE ALL EVIDENCE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function cleanup(action) {
+            if (!confirm("Are you sure? This action will cover up potential Vought liabilities.")) return;
+            const res = await fetch('/api/clean-up', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action })
+            });
+            const data = await res.json();
+            alert(data.message);
+            location.reload();
+        }
+
+        async function fetchStats() {
+            const res = await fetch('/api/admin/stats');
+            const data = await res.json();
+            document.getElementById('count-news').textContent = data.newsCount;
+            document.getElementById('count-subs').textContent = data.subscribersCount;
+            document.getElementById('count-orders').textContent = data.ordersCount;
+
+            const tbody = document.getElementById('activity-table-body');
+            tbody.innerHTML = '';
+            
+            // Show Recent Orders
+            data.recentOrders.forEach(order => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>ORDER</td><td style="color: #22c55e;">${order.customerName} purchased ${order.itemsCount} items ($${order.total})</td><td>${new Date(order.date).toLocaleDateString()}</td>`;
+                tbody.appendChild(tr);
+            });
+
+            // Show Published News (from same stats API if I update it)
+            if (data.recentNews) {
+                data.recentNews.forEach(news => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `<td>NEWS</td><td style="color: var(--red);">${news.title} (${news.tag})</td><td>${news.date}</td>`;
+                    tbody.appendChild(tr);
+                });
+            }
+        }
+
+        document.getElementById('news-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const news = {
+                title: document.getElementById('news-title').value,
+                tag: document.getElementById('news-tag').value,
+                excerpt: document.getElementById('news-excerpt').value,
+                date: new Date().toLocaleDateString()
+            };
+            const res = await fetch('/api/news', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(news)
+            });
+            if (res.ok) {
+                alert('STORY PUBLISHED TO GLOBAL NETWORK');
+                e.target.reset();
+                fetchStats();
+            }
+        });
+
+        fetchStats();
+    </script>
+</body>
+</html>

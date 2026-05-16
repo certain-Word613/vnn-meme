@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supe Aptitude Test | Vought News Network</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Oswald:wght@700&display=swap" rel="stylesheet">
+</head>
+<body class="quiz-page">
+    <div class="site-bg-image"></div>
+
+    <!-- Breaking News Ticker -->
+    <div class="ticker-wrap">
+        <div class="ticker-label">QUIZ CENTER</div>
+        <div class="ticker-track">
+            <span>ARE YOU THE NEXT HOMELANDER? &bull; TAKE THE TEST &bull; VOUGHT IS WATCHING &bull;</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="brand">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <div class="show-title">
+                        <img src="the_boys_logo.png" alt="The Boys" class="brand-logo">
+                    </div>
+                    <div class="brand-sub">VOUGHT NEWS NETWORK</div>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">HOME</a>
+                <a href="quiz.html" class="nav-link active">QUIZ</a>
+                <a href="shop.html" class="nav-link">SHOP <span id="cart-count" style="background: var(--red); padding: 2px 6px; border-radius: 50%; font-size: 0.7rem;">0</span></a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-layout" style="display: block; max-width: 1200px; margin: 100px auto;">
+        <section class="supe-test-section" id="supe-test" style="margin: 0;">
+            <div class="test-container" style="background: rgba(10,10,10,0.9); backdrop-filter: blur(20px);">
+                <div class="test-header">
+                    <h2>VOUGHT APTITUDE TEST</h2>
+                    <p>Official Evaluation for The Seven Recruitment Program</p>
+                </div>
+                
+                <div id="quiz-box">
+                    <div class="question-wrap" id="question-container">
+                        <h3 id="question-text">Initializing neuro-scan...</h3>
+                        <div class="options-grid" id="options-grid"></div>
+                    </div>
+                    
+                    <div class="result-wrap" id="quiz-result" style="display: none;">
+                        <div class="result-icon" id="result-icon">⚠️</div>
+                        <h3 id="result-title">EVALUATION COMPLETE</h3>
+                        <p id="result-desc"></p>
+                        <button class="stare-btn" onclick="location.reload()">RETAKE TEST</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p class="footer-legal">&copy; 2026 Vought International. Recruitment is mandatory if selected.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
