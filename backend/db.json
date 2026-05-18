@@ -16,12 +16,13 @@
     }
   ],
   "subscribers": [
-    "Shehab"
+    "Shehab",
+    "سشهلا"
   ],
   "orders": [],
   "incidentCount": 0,
-  "brainCellsLost": 36,
-  "livesSaved": 1554740,
+  "brainCellsLost": 120,
+  "livesSaved": 1582208,
   "heroRatings": {
     "Homelander": 98.5,
     "Starlight": 82.1,

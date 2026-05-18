@@ -77,6 +77,8 @@ body {
     align-items: center;
     flex-shrink: 0;
     border-right: 2px solid rgba(255,255,255,0.3);
+    position: relative;
+    z-index: 2;
 }
 .ticker-track {
     display: flex;
@@ -87,6 +89,8 @@ body {
     font-weight: 600;
     letter-spacing: 0.5px;
     color: #fff;
+    position: relative;
+    z-index: 1;
 }
 .ticker-track span { padding: 0 40px; }
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -1459,7 +1463,32 @@ body {
 .footer-links span:hover { color: #fff; }
 .footer-legal { font-family: var(--font-ui); font-size: 0.58rem; color: #444; max-width: 600px; line-height: 1.6; }
 
+/* Shop page specific layout */
+.shop-layout {
+    max-width: 1400px;
+    margin: 100px auto;
+    padding: 0 24px;
+}
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
 /* ── RESPONSIVE ── */
+@media (max-width: 1200px) {
+    .sidebar-left, .sidebar-right {
+        display: none !important;
+    }
+    .main-layout {
+        grid-template-columns: 1fr;
+    }
+    .center-content {
+        grid-column: 1;
+        border: none;
+    }
+}
+
 @media (max-width: 1024px) {
     .main-grid { grid-template-columns: 1fr; }
     .sidebar { display:grid; grid-template-columns: repeat(2,1fr); gap:20px; }
@@ -1467,13 +1496,151 @@ body {
     .hero-badge-wrap { display:none; }
     .stats-inner { flex-wrap:wrap; gap:30px; }
     .stat-divider { display:none; }
+    
+    /* Responsive Grids on Tablets */
+    .shop-grid { grid-template-columns: repeat(2, 1fr); }
+    .streaming-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .sponsored-grid { grid-template-columns: repeat(2, 1fr); }
+    .wanted-grid { grid-template-columns: repeat(3, 1fr); }
 }
+
 @media (max-width: 640px) {
-    .header-inner { gap:12px; }
-    .main-nav { display:none; }
+    /* Responsive Header & Navigation */
+    .header-inner {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+        gap: 12px;
+    }
+    .main-nav {
+        display: flex !important;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 5px;
+        width: 100%;
+        margin-left: 0;
+    }
+    .nav-link {
+        padding: 4px 10px;
+        font-size: 0.7rem;
+    }
+    .header-cta {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    /* Stacking Incident Counter */
+    .incident-bar {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+        padding: 10px 15px;
+    }
+    .incident-ticker {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid rgba(0,0,0,0.1);
+        padding-top: 8px;
+        width: 100%;
+        animation: pulse-red 2s infinite;
+    }
+
+    /* Responsive Story Cards */
     .story-card, .featured-story { grid-template-columns: 1fr; }
     .stories-row { grid-template-columns: 1fr; }
     .sidebar { grid-template-columns: 1fr; }
+    
+    /* Hero Feature */
     .hero-content { padding: 40px 24px; }
     .hero-headline { font-size: 1.6rem; }
+    .hero-meta { flex-wrap: wrap; gap: 5px 10px; }
+    .hero-feature { min-height: 400px; }
+
+    /* Homelander Stare Simulator Mobile Scaling */
+    .stare-container {
+        height: 380px;
+    }
+    .eyes-wrap {
+        gap: 75px;
+        top: 36%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .eye {
+        width: 25px;
+        height: 10px;
+    }
+    .game-title {
+        font-size: 1.8rem;
+    }
+    .timer {
+        font-size: 2.2rem;
+    }
+
+    /* Report Box Stacking */
+    .report-box {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        padding: 20px;
+    }
+    .report-btn {
+        width: 100%;
+    }
+
+    /* Mobile Deep Thoughts Section */
+    .deep-thoughts {
+        padding: 40px 15px;
+    }
+    .deep-title {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+    #current-thought {
+        font-size: 1.2rem;
+    }
+
+    /* Mobile Quiz Page Evaluator */
+    .quiz-page main.main-layout {
+        margin: 40px auto !important;
+    }
+    .test-container {
+        padding: 20px !important;
+        border-radius: 12px;
+    }
+    .test-header h2 {
+        font-size: 1.6rem !important;
+    }
+    .option-btn {
+        padding: 15px !important;
+        font-size: 0.8rem !important;
+    }
+
+    /* Mobile Shop layout margins */
+    .shop-layout {
+        margin: 40px auto !important;
+    }
+    .shop-header h1 {
+        font-size: 2.2rem !important;
+    }
+
+    /* Responsive Grids on Mobile */
+    .shop-grid { grid-template-columns: 1fr; }
+    .sponsored-grid { grid-template-columns: 1fr; }
+    .wanted-grid { grid-template-columns: repeat(2, 1fr); }
+    .streaming-grid { grid-template-columns: 1fr; }
+    .movie-poster { height: 280px; }
 }
+
+@media (max-width: 480px) {
+    /* Full-screen drawer for cart on narrow screens */
+    .cart-modal {
+        width: 100%;
+        right: -100%;
+        padding: 20px;
+    }
+    .wanted-grid {
+        grid-template-columns: 1fr;
+    }
+}
+

@@ -22,6 +22,17 @@
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         th, td { text-align: left; padding: 15px; border-bottom: 1px solid #222; }
         th { color: #666; font-size: 0.8rem; text-transform: uppercase; }
+        @media (max-width: 768px) {
+            body { padding: 20px 10px !important; }
+            .admin-header { flex-direction: column; text-align: center; gap: 15px; margin-bottom: 25px; }
+            .stats-row { grid-template-columns: 1fr !important; gap: 15px !important; margin-bottom: 25px; }
+            .admin-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+            .admin-card { padding: 20px 15px !important; }
+            .admin-card div[style*="display: grid"] { grid-template-columns: 1fr !important; }
+            .admin-card div[style*="display: grid"] button { grid-column: span 1 !important; }
+            table { display: block; overflow-x: auto; white-space: nowrap; }
+            th, td { padding: 10px 8px !important; font-size: 0.85rem; }
+        }
     </style>
 </head>
 <body>
