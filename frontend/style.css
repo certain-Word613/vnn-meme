@@ -1433,7 +1433,7 @@ body {
     gap: 18px;
     text-align: center;
 }
-.footer-logo { display:flex; align-items:center; }
+.footer-logo { display:flex; align-items:center; justify-content:center; }
 .footer-brand-logo {
     height: 48px;
     width: auto;
